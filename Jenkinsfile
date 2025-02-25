@@ -2,12 +2,6 @@ pipeline {
     agent any
 
     stages {
-        stage('Clone Repository') {
-            steps {
-                git branch: 'main', url: 'https://github.com/aliensell/PandaTest.git'
-            }
-        }
-        
         stage('Build') {
             steps {
                 echo 'Building the project...'
