@@ -8,7 +8,7 @@ set -e
 # -------------------------
 echo "Installing dependencies..."
 sudo apt update && sudo apt upgrade -y
-sudo apt install -y openjdk-17-jdk gnupg curl gzip net-tools
+sudo apt install -y openjdk-17-jdk gnupg curl gzip git net-tools
 java -version
 
 echo "Adding Jenkins GPG key and repository..."
