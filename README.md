@@ -12,3 +12,4 @@ configure:
 definition -> pipeline script from scm
 scm -> git
 repository URL - https://github.com/aliensell/PandaTest.git
+branch -> main
