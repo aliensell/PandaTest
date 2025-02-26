@@ -1,6 +1,7 @@
 def imagetag = ''
 def imagename = 'python_http_server'
 def containername = 'http-server-container'
+def containeripaddress = ''
 
 pipeline {
     agent any
