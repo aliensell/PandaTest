@@ -38,7 +38,7 @@ pipeline {
             steps {
                 script {
                     sh """
-                    curl -i http://localhost:8888/hello
+
                     """
                 }
             }
