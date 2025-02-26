@@ -1,5 +1,5 @@
-def currentYear = ''
 def imagetag = ''
+def imagename = 'python_http_server'
 
 pipeline {
     agent any
@@ -7,8 +7,8 @@ pipeline {
         stage('Prepare image tag') {
             steps {
                 script {
-                currentYear = new Date().format('yyyy')
-                imagetag = currentYear + '.' + BUILD_ID
+                def currentYear = new Date().format('yyyy')
+                imagetag = currentYear.BUILD_ID
                 println('Image tag is: ' + imagetag)
                 }
             }
