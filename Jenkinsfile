@@ -41,6 +41,7 @@ pipeline {
             steps {
                 script {
                     sh """
+                    ping ${containeripaddress}
                     curl -i http://${containeripaddress}:8888/hello
                     """
                 }
