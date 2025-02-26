@@ -10,7 +10,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             self.send_response(200)
             self.send_header('Content-type', 'application/json')
             self.end_headers()
-            response = json.dumps({"message": "Hello, World!"})
+            response = json.dumps({"message": "Connected!"})
             self.wfile.write(response.encode())
         else:
             self.send_response(404)
