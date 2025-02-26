@@ -1,11 +1,15 @@
+def currentYear = ''
+def imagetag = ''
+
 pipeline {
     agent any
     stages {
-        stage('Prepare tag') {
+        stage('Prepare image tag') {
             steps {
                 script {
-                println('BUILD_ID: ' + BUILD_ID)
-                println('BUILD_TAG: ' + BUILD_TAG)
+                currentYear = new Date().format('yyyy')
+                imagetag = currentYear + '.' + ${BUILD_ID}
+                println('Image tag is: ' + imagetag)
                 }
             }
         }
