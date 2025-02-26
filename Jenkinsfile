@@ -17,7 +17,7 @@ pipeline {
             steps {
                 script {
                     sh """
-                    docker build -t ${imagename}:${imagetag} -f Dockerfile
+                    docker build -t ${imagename}:${imagetag} -f Dockerfile .
                     docker images
                     """
                 }
