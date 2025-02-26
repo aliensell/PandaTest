@@ -23,13 +23,20 @@ pipeline {
                 }
             }
         }
-        stage('Run http server') {
+        stage('Run http server in container') {
             steps {
                 script {
                     sh """
                     docker run -d -p 8888:8888 --name http-server-container ${imagename}:${imagetag}
                     docker ps
                     """
+                }
+            }
+        }
+        stage('Test') {
+            steps {
+                script {
+                    
                 }
             }
         }
