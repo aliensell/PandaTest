@@ -18,3 +18,6 @@ definition -> pipeline script from scm
 scm -> git
 repository URL - https://github.com/aliensell/PandaTest.git
 branch -> main
+
+python httpserver.py -> for manual run
+curl -i http://127.0.0.1:8888/hello -> for test
