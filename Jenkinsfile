@@ -8,7 +8,7 @@ pipeline {
             steps {
                 script {
                 currentYear = new Date().format('yyyy')
-                imagetag = currentYear + '.' + ${BUILD_ID}
+                imagetag = currentYear + '.' + BUILD_ID
                 println('Image tag is: ' + imagetag)
                 }
             }
