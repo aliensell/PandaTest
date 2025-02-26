@@ -4,8 +4,8 @@ pipeline {
         stage('Prepare tag') {
             steps {
                 script {
-                println('BUILD_ID: ' + ${BUILD_ID})
-                println('BUILD_TAG: ' + ${BUILD_TAG})
+                println('BUILD_ID: ' + BUILD_ID)
+                println('BUILD_TAG: ' + BUILD_TAG)
                 }
             }
         }
