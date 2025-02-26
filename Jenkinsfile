@@ -23,11 +23,13 @@ pipeline {
                 }
             }
         }
-        stage('Deploy') {
+        stage('Run http server') {
             steps {
                 script {
-                echo 'Deploying the application...'
-                // Example: Deploy files, restart services, etc.
+                    sh """
+                    docker run -d -p 8888:8888 --name http-server-container ${imagename}:${imagetag}
+                    docker ps
+                    """
                 }
             }
         }
