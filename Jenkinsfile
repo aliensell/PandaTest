@@ -49,7 +49,7 @@ pipeline {
            sh """
            docker stop ${containername}
            docker rm ${containername}
-           //docker rmi ${imagename}:${imagetag}
+           #docker rmi ${imagename}:${imagetag}
            """
            cleanWs()
        } 
