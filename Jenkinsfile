@@ -1,16 +1,14 @@
 pipeline {
     agent any
-
     stages {
-        stage('Build') {
+        stage('Prepare tag') {
             steps {
                 script {
-                echo 'Building the project...'
-                // Add build commands here (e.g., compile code, run make, mvn package, etc.)
+                println('BUILD_ID: ' + ${BUILD_ID})
+                println('BUILD_TAG: ' + ${BUILD_TAG})
                 }
             }
         }
-
         stage('Test') {
             steps {
                 script {
@@ -19,7 +17,6 @@ pipeline {
                 }
             }
         }
-
         stage('Deploy') {
             steps {
                 script {
