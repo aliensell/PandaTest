@@ -7,17 +7,19 @@ pipeline {
         stage('Prepare image tag') {
             steps {
                 script {
-                def currentYear = new Date().format('yyyy')
-                imagetag = currentYear.BUILD_ID
-                println('Image tag is: ' + imagetag)
+                    def currentYear = new Date().format('yyyy')
+                    imagetag = currentYear + '.' + BUILD_ID
+                    println('Image tag is: ' + imagetag)
                 }
             }
         }
-        stage('Test') {
+        stage('Build image') {
             steps {
                 script {
-                echo 'Running tests...'
-                // Example: Run tests (e.g., ./run-tests.sh, mvn test, pytest, etc.)
+                    sh """
+                    docker build -t ${imagename}:${imagetag} -f Dockerfile
+                    docker images
+                    """
                 }
             }
         }
