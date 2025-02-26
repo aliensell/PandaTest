@@ -1,5 +1,6 @@
 def imagetag = ''
 def imagename = 'python_http_server'
+def containername = 'http-server-container'
 
 pipeline {
     agent any
@@ -27,7 +28,7 @@ pipeline {
             steps {
                 script {
                     sh """
-                    docker run -d -p 8888:8888 --name http-server-container ${imagename}:${imagetag}
+                    docker run -d -p 8888:8888 --name ${containername} ${imagename}:${imagetag}
                     docker ps
                     """
                 }
@@ -42,5 +43,15 @@ pipeline {
                 }
             }
         }
+    }
+    post {
+       cleanup {
+           sh """
+           docker stop ${containername}
+           docker rm ${containername}
+           docker rmi ${imagename}:${imagetag}
+           """
+           cleanWs()
+       } 
     }
 }
