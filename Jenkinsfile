@@ -30,9 +30,9 @@ pipeline {
                 script {
                     sh """
                     docker run -d -p 8888:8888 --name ${containername} ${imagename}:${imagetag}
-                    docker ps
-                    containeripaddress = docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' ${containername}                 
+                    docker ps            
                     """
+                    containeripaddress = sh(script: "docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' ${containername}", returnStdout: true).trim()
                     println('Container IP is : ' + containeripaddress)
                 }
             }
