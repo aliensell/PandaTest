@@ -28,6 +28,8 @@ pipeline {
         stage('Run http server in container') {
             steps {
                 script {
+                    def containerExists = sh(script: "docker ps -q -f name=${containername}", returnStdout: true).trim()
+                    println('Is containerExists : ' + containerExists)
                     sh """
                     docker run -d -p 8888:8888 --name ${containername} ${imagename}:${imagetag}
                     docker ps            
