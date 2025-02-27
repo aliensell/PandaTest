@@ -41,15 +41,19 @@ services:
       - grafana-storage:/var/lib/grafana
 
   cadvisor:
-    image: google/cadvisor:latest
+    image: gcr.io/cadvisor/cadvisor:latest
     container_name: cadvisor
     ports:
       - "8081:8080"
     restart: unless-stopped
+    privileged: true
+    devices:
+      - "/dev/kmsg"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /sys:/sys:ro
       - /var/lib/docker/:/var/lib/docker:ro
+      - /cgroup:/cgroup:ro
 
 volumes:
   grafana-storage:
@@ -74,4 +78,5 @@ EOF
 sudo docker compose up -d
 
 # Output success message
+echo "Grafana and Prometheus installation complete."
 echo "Access Grafana at http://localhost:3000 (admin/admin)"
