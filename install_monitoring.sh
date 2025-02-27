@@ -44,7 +44,7 @@ services:
     image: google/cadvisor:latest
     container_name: cadvisor
     ports:
-      - "8080:8080"
+      - "8081:8080"
     restart: unless-stopped
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
@@ -67,7 +67,7 @@ scrape_configs:
 
   - job_name: 'cadvisor'
     static_configs:
-      - targets: ['localhost:8080']
+      - targets: ['localhost:8081']
 EOF
 
 # Start services using Docker Compose
