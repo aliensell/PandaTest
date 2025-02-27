@@ -30,6 +30,12 @@ pipeline {
                 script {
                     def containerExists = sh(script: "docker ps -q -f name=${containername}", returnStdout: true).trim()
                     println('Is containerExists : ' + containerExists)
+                    if (containerExists) {
+                        sh """
+                        docker stop ${containername}
+                        docker rm ${containername}
+                        """
+                    }
                     sh """
                     docker run -d -p 8888:8888 --name ${containername} ${imagename}:${imagetag}
                     docker ps            
@@ -53,8 +59,6 @@ pipeline {
     post {
        cleanup {
            sh """
-           docker stop ${containername}
-           docker rm ${containername}
            docker rmi ${imagename}:${imagetag}
            """
            cleanWs()
