@@ -52,7 +52,7 @@ global:
 scrape_configs:
   - job_name: 'prometheus'
     static_configs:
-      - targets: ['localhost:9090']
+      - targets: ['<type ip address of container>:9090']
 
 EOF
 
