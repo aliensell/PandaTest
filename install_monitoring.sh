@@ -42,7 +42,6 @@ services:
     restart: unless-stopped
     volumes:
       - /var/lib/docker:/var/lib/docker
-      - /var/run/docker.sock:/var/run/docker.sock
     command: ["--experimental", "--metrics-addr=0.0.0.0:9323"]
     
   grafana:
