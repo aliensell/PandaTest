@@ -73,7 +73,7 @@ scrape_configs:
       
   - job_name: 'node'
     static_configs:
-      - targets: ['localhost:9100']
+      - targets: ['node:9100']
 
 EOF
 
