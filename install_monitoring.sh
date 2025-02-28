@@ -69,11 +69,11 @@ global:
 scrape_configs:
   - job_name: 'prometheus'
     static_configs:
-      - targets: ['prometheus:9090']
+      - targets: ['localhost:9090']
       
   - job_name: 'node'
     static_configs:
-      - targets: ['node_exporter:9100']
+      - targets: ['localhost:9100']
 
 EOF
 
