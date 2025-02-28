@@ -30,15 +30,20 @@ services:
     networks:
       - monitoring
     restart: unless-stopped
-    
-  node_exporter:
-    image: prom/node-exporter:latest
-    container_name: node_exporter
+   
+  docker-daemon:
+    image: docker:dind
+    container_name: docker_engine_metrics
+    privileged: true
     ports:
-      - "9100:9100"
+      - "9323:9323"
     networks:
       - monitoring
     restart: unless-stopped
+    volumes:
+      - /var/lib/docker:/var/lib/docker
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: ["--experimental", "--metrics-addr=0.0.0.0:9323"]
     
   grafana:
     image: grafana/grafana:latest
@@ -71,9 +76,9 @@ scrape_configs:
     static_configs:
       - targets: ['prometheus:9090']
       
-  - job_name: 'node'
+  - job_name: 'docker'
     static_configs:
-      - targets: ['localhost:9100']
+      - targets: ['host.docker.internal:9323']
 
 EOF
 
