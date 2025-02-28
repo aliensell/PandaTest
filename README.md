@@ -28,3 +28,5 @@ Go to Configuration → Data Sources.
 Click "Add data source" and select Prometheus. 
 http://<ip of prometheus pod>:9090
 Save and test
+
+import dashboard in grafana with ID 893 and 179
