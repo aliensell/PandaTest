@@ -40,25 +40,6 @@ services:
     volumes:
       - grafana-storage:/var/lib/grafana
 
-  cadvisor:
-    image: gcr.io/cadvisor/cadvisor:latest
-    container_name: cadvisor
-    ports:
-      - "8081:8081"
-    restart: unless-stopped
-    privileged: true
-    devices:
-      - "/dev/kmsg"
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-      - /sys:/sys:ro
-      - /var/lib/docker/:/var/lib/docker:ro
-      - /cgroup:/cgroup:ro    
-      - /:/rootfs:ro
-      - /var/run:/var/run:ro
-      - /etc/machine-id:/etc/machine-id:ro
-      - /var/lib/dbus/machine-id:/var/lib/dbus/machine-id:ro
-
 volumes:
   grafana-storage:
 EOF
@@ -73,9 +54,6 @@ scrape_configs:
     static_configs:
       - targets: ['localhost:9090']
 
-  - job_name: 'cadvisor'
-    static_configs:
-      - targets: ['localhost:8081']
 EOF
 
 # Start services using Docker Compose
