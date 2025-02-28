@@ -69,7 +69,11 @@ global:
 scrape_configs:
   - job_name: 'prometheus'
     static_configs:
-      - targets: ['<type ip address of container>:9090']
+      - targets: ['prometheus:9090']
+      
+  - job_name: 'node'
+    static_configs:
+      - targets: ['node_exporter:9100']
 
 EOF
 
