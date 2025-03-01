@@ -1,3 +1,5 @@
+Manual
+
 1. Environment preparation
 
 Intsall Debian 12 VM
@@ -30,3 +32,6 @@ http://<ip of prometheus pod>:9090
 Save and test
 
 import dashboard in grafana with ID 893 and 179
+
+container cpu usage metrics ->    container_cpu_load_average_10s{image!=""}
+container memory usage metrics -> container_memory_max_usage_bytes{image!=""}
