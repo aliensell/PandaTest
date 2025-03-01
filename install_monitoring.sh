@@ -45,7 +45,7 @@ cadvisor:
     networks:
       - monitoring
     
-  grafana:
+grafana:
     image: grafana/grafana:latest
     container_name: grafana
     ports:
