@@ -31,18 +31,19 @@ services:
       - monitoring
     restart: unless-stopped
    
-  docker-daemon:
-    image: docker:dind
-    container_name: docker_engine_metrics
-    privileged: true
+cadvisor:
+    image: gcr.io/cadvisor/cadvisor:latest
+    container_name: cadvisor
+    restart: unless-stopped
     ports:
-      - "9323:9323"
+      - "8081:8080"  
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
     networks:
       - monitoring
-    restart: unless-stopped
-    volumes:
-      - /var/lib/docker:/var/lib/docker
-    command: ["--experimental", "--metrics-addr=0.0.0.0:9323"]
     
   grafana:
     image: grafana/grafana:latest
@@ -59,7 +60,8 @@ services:
 
 networks:
   monitoring:
-    driver: bridge
+    driver: bridge  
+    #external: true
 
 volumes:
   grafana-storage:
@@ -75,9 +77,9 @@ scrape_configs:
     static_configs:
       - targets: ['prometheus:9090']
       
-  - job_name: 'docker'
+  - job_name: 'cadvisor'
     static_configs:
-      - targets: ['host.docker.internal:9323']
+      - targets: ['cadvisor:8080']
 
 EOF
 
