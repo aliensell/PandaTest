@@ -60,8 +60,7 @@ cadvisor:
 
 networks:
   monitoring:
-    driver: bridge  
-    #external: true
+    driver: bridge  #external: true
 
 volumes:
   grafana-storage:
