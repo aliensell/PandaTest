@@ -31,7 +31,7 @@ services:
       - monitoring
     restart: unless-stopped
    
-cadvisor:
+  cadvisor:
     image: gcr.io/cadvisor/cadvisor:latest
     container_name: cadvisor
     restart: unless-stopped
@@ -45,7 +45,7 @@ cadvisor:
     networks:
       - monitoring
     
-grafana:
+  grafana:
     image: grafana/grafana:latest
     container_name: grafana
     ports:
