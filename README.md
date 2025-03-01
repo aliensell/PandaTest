@@ -34,4 +34,6 @@ Save and test
 import dashboard in grafana with ID 893 and 179
 
 container cpu usage metrics ->    container_cpu_load_average_10s{image!=""}
+
 container memory usage metrics -> container_memory_max_usage_bytes{image!=""}
+query for alert -> container_memory_max_usage_bytes{image!=""} > 15000000
