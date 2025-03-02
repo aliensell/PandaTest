@@ -1,14 +1,15 @@
 Manual
 
 1. Environment preparation
+For environment was choosed VM on Debian 12
 
-Intsall Debian 12 VM
+For preparing environment in console execute:
+chmod +x Jenkins_Docker_installation.sh
+chmod +x install_monitoring.sh
+./Jenkins_Docker_installation.sh
+./install_monitoring.sh
 
-in console execute:
-chmod +x install_jenkins_docker.sh
-./install_jenkins_docker.sh
-
-in Jenkins
+2. Jenkins configuration
 
 manage plugins and add:
 build monitor view
@@ -20,6 +21,8 @@ definition -> pipeline script from scm
 scm -> git
 repository URL - https://github.com/aliensell/PandaTest.git
 branch -> main
+
+3. Monitoring configuration
 
 python httpserver.py -> for manual run
 curl -i http://127.0.0.1:8888/hello -> for test
