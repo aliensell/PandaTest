@@ -1,13 +1,19 @@
 Manual
 
 1. Environment preparation
+
 For environment was choosed VM on Debian 12
 
 For preparing environment in console execute:
-chmod +x Jenkins_Docker_installation.sh
-chmod +x install_monitoring.sh
-./Jenkins_Docker_installation.sh
-./install_monitoring.sh
+
+  chmod +x Jenkins_Docker_installation.sh
+  
+  chmod +x install_monitoring.sh
+  
+  ./Jenkins_Docker_installation.sh
+  
+  ./install_monitoring.sh
+
 
 2. Jenkins configuration
 
