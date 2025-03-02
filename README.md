@@ -17,17 +17,17 @@ For preparing environment in console execute:
 
 2. Jenkins configuration
 
-manage plugins and add:
-build monitor view
-git plugin
+By link localhost:8080 finishing standard installation and creating pipeline
 
-Jenkins Dashboard -> New Item -> pipeline
-configure: 
-definition -> pipeline script from scm
-scm -> git
-repository URL - https://github.com/aliensell/PandaTest.git
-branch -> main
+  Jenkins Dashboard -> New Item -> pipeline
+    configure: 
+    definition -> pipeline script from scm
+    scm -> git
+    repository URL - https://github.com/aliensell/PandaTest.git
+    branch -> main
 
+  Jenkins pipeline (Jenkinsfile) consists steps for preparing tag, build image, run http server in docker container, test with http request and cleanup
+  
 3. Monitoring configuration
 
 python httpserver.py -> for manual run
