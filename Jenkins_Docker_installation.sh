@@ -18,8 +18,6 @@ echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkin
 echo "Installing Jenkins..."
 sudo apt update
 sudo apt install -y jenkins
-
-echo "Enabling and starting Jenkins service..."
 sudo systemctl enable jenkins
 sudo systemctl start jenkins
 sudo systemctl status jenkins --no-pager
@@ -41,8 +39,6 @@ sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin d
 echo "Enabling and starting Docker service..."
 sudo systemctl enable docker
 sudo systemctl start docker
-
-echo "Checking Docker status..."
 sudo systemctl status docker --no-pager
 
 # -------------------------
