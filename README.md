@@ -30,12 +30,12 @@ By link localhost:8080 finishing standard installation and creating pipeline
   
 3. Monitoring configuration
 
-Add Prometheus as a Data Source in Grafana. Open Grafana (http://localhost:3000), go to Configuration → Data Sources, Click "Add data source" and select Prometheus. 
-URL -> http://prometheus:9090, Save and test.
+Add Prometheus as a Data Source in Grafana. Open Grafana (http://localhost:3000), go to Configuration → Data Sources, Click "Add data source" and select Prometheus
+URL -> http://prometheus:9090, Save and test
 
 Creating a new dashboard with prometheus data source with two vidgets by using next metrics:
   container cpu usage metrics    -> container_cpu_load_average_10s{image!=""}
   container memory usage metrics -> container_memory_max_usage_bytes{image!=""}
   
 Creating two alerts by using memory by container more than 110Mb and CPU usage more than 80%
-Screens with details in attached *.jpg images
+Screens with details in attached *.png images
