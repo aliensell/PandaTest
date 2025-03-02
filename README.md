@@ -30,19 +30,12 @@ By link localhost:8080 finishing standard installation and creating pipeline
   
 3. Monitoring configuration
 
-python httpserver.py -> for manual run
-curl -i http://127.0.0.1:8888/hello -> for test
+Add Prometheus as a Data Source in Grafana. Open Grafana (http://localhost:3000), go to Configuration → Data Sources, Click "Add data source" and select Prometheus. 
+URL -> http://prometheus:9090, Save and test.
 
-Add Prometheus as a Data Source in Grafana
-Open Grafana (http://localhost:3000).
-Go to Configuration → Data Sources.
-Click "Add data source" and select Prometheus. 
-http://<ip of prometheus pod>:9090
-Save and test
-
-import dashboard in grafana with ID 893 and 179
-
-container cpu usage metrics ->    container_cpu_load_average_10s{image!=""}
-
-container memory usage metrics -> container_memory_max_usage_bytes{image!=""}
-query for alert -> container_memory_max_usage_bytes{image!=""} > 15000000
+Creating a new dashboard with prometheus data source with two vidgets by using next metrics:
+  container cpu usage metrics    -> container_cpu_load_average_10s{image!=""}
+  container memory usage metrics -> container_memory_max_usage_bytes{image!=""}
+  
+Creating two alerts by using memory by container more than 110Mb and CPU usage more than 80%
+Screens with details in attached *.jpg images
